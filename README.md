@@ -10,25 +10,25 @@ Setup Guide
 
 1) Create your virtual env first in Python3.
 
-  virtualenv -p python3 env
+      virtualenv -p python3 env
 
   
 
 2) activate env clone the repository and install required packages. 
 
-  source env/bin/activate
+      source env/bin/activate
 
-  pip install -r requirements.txt
+      pip install -r requirements.txt
 
   
 
 3) For a completely new database change DATABASE variable in the settings.py and perform migrations. Then start server.
 
-  python manage.py makemigrations
+      python manage.py makemigrations
 
-  python manage.py migrate
+      python manage.py migrate
 
-  python manage.py runserver
+      python manage.py runserver
 
   
 
