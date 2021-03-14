@@ -29,8 +29,10 @@ class Staff(BaseModel):
     objects = StaffModelManager()
 
     def __str__(self):
-        return self.user.get_full_name()
-
+        if self.user:
+            return self.user.get_full_name()
+        return (self.id)
+        
     def get_role(self):
         if self.user.is_superuser:
             return 'admin'

@@ -1,17 +1,14 @@
-from rest_framework import serializers
-from base.methods import convert_to_date
 from datetime import datetime,timedelta
 import calendar
-
+from django.db.models import Q
+from rest_framework import status
 from classapp.models import ClassDefinition
-from django.http import response
 from classapp.models import Subject
-from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.db import  transaction
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.views import APIView, exception_handler
+from rest_framework.views import APIView
 from django.conf import settings
 from base.decorators import check_permissions
 from .serializers import SubjectSerializer,ClassDefinitionSerializer
@@ -55,7 +52,8 @@ class CreateClassView(APIView):
     permission_classes = [IsAuthenticated,]
     
     def get(self, request):
-        classes = ClassDefinition.objects.filter(is_deleted = False).order_by("class_date","start_time")
+        today = datetime.today()
+        classes = ClassDefinition.objects.filter(class_date__gte = today,is_deleted = False).exclude(status="cancelled").order_by("class_date","start_time")
         serializer = ClassDefinitionSerializer(classes, many = True)
 
         return Response(serializer.data,200)
@@ -73,6 +71,8 @@ class CreateClassView(APIView):
 
             class_date = validated_data.get("class_date")
             staff = validated_data.get("staff")
+            start_time = validated_data.get("start_time")
+            end_time = validated_data.get("end_time")
             
             #check if its not saturday or sunday 
             weekday = calendar.day_name[class_date.weekday()].lower()
@@ -100,6 +100,12 @@ class CreateClassView(APIView):
             classes = ClassDefinition.objects.filter(class_date = class_date)
             if len(classes) > 6:
                 return Response("Error: You can not create more then 6 classes on single day.",400)
+            occupied_class = ClassDefinition.objects \
+                                    .filter(class_date = class_date ,is_deleted = False, class_status= "scheduled" , staff=staff)\
+                                    .filter(Q(start_time__lte=start_time, end_time__gt=start_time) |
+                                            Q(start_time__gt=end_time, end_time__lte=end_time))
+            if occupied_class:
+                return Response("Error: Teacher is alredy occupied with another class in this time period.",400)
             else : 
                 serializer.save()
         return Response(serializer.data,200)

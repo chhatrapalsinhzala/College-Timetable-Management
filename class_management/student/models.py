@@ -14,7 +14,7 @@ class Student(BaseModel):
     address = models.TextField('Address', max_length=200,null=True, blank=True)
     
     def __str__(self):
-        if self.student:
+        if self.user:
             return self.user.get_full_name()
         else:
             return str(self.id)

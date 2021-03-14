@@ -4,9 +4,7 @@ from base.models import BaseModel
 
 User = get_user_model()
 
-
-
-# Create your models here.
+# Subject model here.
 class Subject(BaseModel):
     name = models.CharField(max_length=200, unique=True)
     short_name = models.CharField(max_length=200)
@@ -14,6 +12,7 @@ class Subject(BaseModel):
     def __str__(self):
         return self.name
 
+#Define the class 
 class ClassDefinition(BaseModel):
     """
     class definition model to store all class details
@@ -32,10 +31,6 @@ class ClassDefinition(BaseModel):
     modified_by = models.ForeignKey(User,null=True, on_delete=models.SET_NULL, related_name='class_definition_modifier')
     
     def __str__(self):
-        if self.student:
-            return self.student.user.get_full_name()
-        else:
             return str(self.id)
-
 
 

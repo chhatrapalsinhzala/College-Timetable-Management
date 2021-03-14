@@ -1,7 +1,4 @@
-from django.core.exceptions import ValidationError
-from django.db.models import fields
 from rest_framework import serializers
-from staff.models import Staff
 from .models import Subject,ClassDefinition
 
 from django.contrib.auth import get_user_model
