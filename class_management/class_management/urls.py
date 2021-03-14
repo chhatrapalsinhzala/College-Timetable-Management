@@ -33,6 +33,4 @@ urlpatterns = [
     url(r'^api/classapp', include('classapp.urls'), name='apis'),
     url(r'^api/students/', include('student.urls'), name='students'),
     url('admin/', admin.site.urls),
-
-
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

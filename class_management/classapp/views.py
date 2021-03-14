@@ -53,7 +53,7 @@ class CreateClassView(APIView):
     
     def get(self, request):
         today = datetime.today()
-        classes = ClassDefinition.objects.filter(class_date__gte = today,is_deleted = False).exclude(status="cancelled").order_by("class_date","start_time")
+        classes = ClassDefinition.objects.filter(class_date__gte = today,is_deleted = False).exclude(class_status="cancelled").order_by("class_date","start_time")
         serializer = ClassDefinitionSerializer(classes, many = True)
 
         return Response(serializer.data,200)
