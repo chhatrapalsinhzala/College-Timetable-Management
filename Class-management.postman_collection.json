@@ -1,0 +1,395 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Class-management",
+		"_postman_id": "5836cc18-71ad-0dad-bd3d-c0133f9c77d7",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "classapp",
+			"description": "",
+			"item": [
+				{
+					"name": "create subject",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"token\", \"JWT \"+data.result.token);"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "localhost:8000/api/classapp/subject/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\t\n\t\n\t\"name\" : \"Science\",\n\t\"short_name\" : \"SCI\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "create class",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"token\", \"JWT \"+data.result.token);"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "localhost:8000/api/classapp/create-class/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\t\n\t\n\t\"class_date\" : \"2021-03-15\",\n\t\"start_time\" :\"8:00\",\n\t\"end_time\" : \"9:00\",\n\t\"staff\" : 12,\n\t\"subject\" : 3,\n\t\"duration\":\"1 hour\",\n\t\"class_status\" : \"scheduled\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "cancel class",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"token\", \"JWT \"+data.result.token);"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "localhost:8000/api/classapp/create-class/",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\t\n\t\"id\":1,\n\t\"class_status\" : \"cancelled\",\n\t\"is_deleted\" : true\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "get class list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"token\", \"JWT \"+data.result.token);"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "localhost:8000/api/classapp/create-class/",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\t\n\t\n\t\"class_date\" : \"2021-03-14\",\n\t\"start_time\" :\"8:00\",\n\t\"end_time\" : \"9:00\",\n\t\"staff\" : 12,\n\t\"subject\" : 3,\n\t\"duration\":\"1 hour\",\n\t\"class_status\" : \"scheduled\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "get subject list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"token\", \"JWT \"+data.result.token);"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "localhost:8000/api/classapp/subject/",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\t\n\t\n\t\"name\" : \"Mathematics\",\n\t\"short_name\" : \"MATH\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "update subject",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"token\", \"JWT \"+data.result.token);"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "localhost:8000/api/classapp/subject/",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\t\n\t\"id\" : 3,\n\t\"name\" : \"Mathematics\",\n\t\"short_name\" : \"MATHE\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "staff",
+			"description": "",
+			"item": [
+				{
+					"name": "staff/staff-list/",
+					"request": {
+						"url": "localhost:8000/api/staff/staff-list/",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "register/",
+					"request": {
+						"url": "localhost:8000/register/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"first_name\" : \"test\",\n\t\"last_name\" : \"student\",\n\t\"is_staff\" : false,\n\t\"username\" : \"test student\",\n\t\"password\" : \"test@123\",\n\t\"confirm_password\" : \"test@123\",\n\t\"email\" : \"teste@gmail.com\",\n\t\"phone\" : \"1234657891\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "student",
+			"description": "",
+			"item": [
+				{
+					"name": "remove student from class",
+					"request": {
+						"url": "localhost:8000/api/students/add-student-in-class/",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\" : 1,\n\t\"is_deleted\" : false\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "add student in class/",
+					"request": {
+						"url": "localhost:8000/api/students/add-student-in-class/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"comments\" : \"Added Student to this class\",\n\t\"class_id\" : 2,\n\t\"student\" : 2\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "student class list/",
+					"request": {
+						"url": "localhost:8000/api/students/add-student-in-class/",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"comments\" : \"Added Student to this class\",\n\t\"class_id\" : 2,\n\t\"student\" : 2\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "api/token/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"token\", \"Bearer \"+data.access);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:8000/api/token/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\" : \"zala\",\n\t\"password\" : \"zala\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
