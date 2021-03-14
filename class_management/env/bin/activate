@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/cmzala/Desktop/openxcell/College-Timetable-Management/env"
+VIRTUAL_ENV="/home/cmzala/Desktop/openxcell/College-Timetable-Management/class_management/env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -18,13 +18,12 @@ class ClassDefinition(BaseModel):
     """
     class definition model to store all class details
     """
-    STATUSES_CHOICES = (('scheduled', 'Scheduled'), 
-                        ('cancelled', 'Cancelled'))
+    STATUSES_CHOICES = (('scheduled', 'scheduled'), 
+                        ('cancelled', 'cancelled'))
 
-    start_time = models.TimeField('Start time',null = True, blank = True)
-    end_time = models.TimeField('End time',null = True, blank = True)
-    class_date = models.DateTimeField('Class date', null = True, blank = True)
-    weekday = models.CharField('Weekday', max_length=20, null=True)
+    start_time = models.TimeField('Start time',null = False)
+    end_time = models.TimeField('End time',null = False)
+    class_date = models.DateField('Class date', null = False)
     staff = models.ForeignKey("staff.Staff", verbose_name='Teacher', related_name='teacher',on_delete=models.CASCADE)
     subject = models.ForeignKey(Subject, verbose_name='subject', related_name='subject',on_delete=models.CASCADE)
     duration = models.CharField("Class Duration",max_length=255)

@@ -14,15 +14,25 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
 from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.conf import settings
-
+from staff.views import Register,Login,Logout
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView
+)
 
 urlpatterns = [
+    url(r'api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    url(r'api/refresh/', TokenRefreshView.as_view(), name='token_obtain_pair'),
+    url(r'^register/',Register.as_view(),name='register'),
+    url(r'^login/',Login.as_view(),name='login'),
+    url(r'^logout/',Logout.as_view(),name='logout'),
+    url(r'^api/staff', include('staff.urls'), name='staff'),
+    url(r'^api/classapp', include('classapp.urls'), name='apis'),
+    url(r'^api/students/', include('student.urls'), name='students'),
     url('admin/', admin.site.urls),
-    url(r'^api/staff', include('staff.urls', namespace='staff')),
-    url(r'^api/classsapp', include('classapp.urls', namespace='apis')),
-    url(r'^api/students/', include('student.urls', namespace='students')),
+
+
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

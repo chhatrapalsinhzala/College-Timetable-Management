@@ -1,0 +1,132 @@
+{% load static %}
+{% load account socialaccount %}
+{% get_providers as socialaccount_providers %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+        <meta name="google-signin-client_id" content="56343814273-ji6m9jpn1h7dl4od07k25q72cthvs29f.apps.googleusercontent.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beacon Admin Panel</title>
+	<!-- BOOTSTRAP STYLES-->
+    <link href="{% static 'customadmin/assets/css/bootstrap.css' %}" rel="stylesheet" />
+     <!-- FONTAWESOME STYLES-->
+    <link href="{% static 'customadmin/assets/css/font-awesome.css' %}" rel="stylesheet" />
+        <!-- CUSTOM STYLES-->
+    <link href="{% static 'customadmin/assets/css/custom.css' %}" rel="stylesheet" />
+     <!-- GOOGLE FONTS-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.png' %}">
+
+   <style>
+		/* Shared */
+		.loginBtn {
+		box-sizing: border-box;
+		position: relative;
+		/* width: 13em;  - apply for fixed size */
+		margin: 0.2em;
+		padding: 0 15px 0 46px;
+		border: none;
+		text-align: left;
+		line-height: 34px;
+		white-space: nowrap;
+		border-radius: 0.2em;
+		font-size: 16px;
+		color: #FFF;
+		}
+		.loginBtn:before {
+		content: "";
+		box-sizing: border-box;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 34px;
+		height: 100%;
+		}
+		.loginBtn:focus {
+		outline: none;
+		}
+		.loginBtn:active {
+		box-shadow: inset 0 0 0 32px rgba(0,0,0,0.1);
+		}
+
+		/* Google */
+		.loginBtn--google {
+		/*font-family: "Roboto", Roboto, arial, sans-serif;*/
+		background: #DD4B39;
+		}
+		.loginBtn--google:before {
+		border-right: #BB3F30 1px solid;
+		background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png') 6px 6px no-repeat;
+		}
+		.loginBtn--google:hover,
+		.loginBtn--google:focus {
+		background: #E74B37;
+		}
+   </style>
+</head>
+<body>
+          
+    <div id="wrapper">
+         <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="adjust-nav">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                   <a class="navbar-brand" href="#"><i class="fa fa-square-o "></i>&nbsp;Beacon Math Genie Admin Panel</a>
+                </div>
+            </div>
+        </div>
+        <!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li class="text-center user-image-back">
+                        <img src="{% static 'customadmin/assets/img/logo.png' %}" style="height: 350px; width: 220px;" class="img-responsive" />                     
+                    </li>
+                    <li>
+                        <a href="{% url 'home' %}"><i class="fa fa-desktop "></i>Dashboard</a>
+                    </li>                    
+                </ul>
+            </div>
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                       
+                       <center> <h2><strong> Math Genie Admin Panel</strong></h2></center>   
+                    </div>
+                </div>              
+                 <!-- /. ROW  -->
+                    <br><br>                  
+                    <div class="col-lg-12 text-center" >                        
+                        <div class="login_form_inner  ">
+                            <h3>Log in to enter</h3>
+                            <br>
+                            <div class="col-md-12 form-group">
+                                  {% if socialaccount_providers %}
+                                  	<a href="{% provider_login_url 'google' method='js_sdk' %}" class="btn loginBtn loginBtn--google"> Login with Google</a>
+                                  {% endif %}
+                        </div>
+                    </div>          
+            	</div>
+        </div>
+    </div>
+
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>  
+    <script src="{% static 'customadmin/assets/js/jquery-1.10.2.js' %}"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="{% static 'customadmin/assets/js/bootstrap.min.js' %}"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="{% static 'customadmin/assets/js/jquery.metisMenu.js' %}"></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src="{% static 'customadmin/assets/js/custom.js' %}"></script>
+    
+   {% providers_media_js %}
+</body>
+</html>

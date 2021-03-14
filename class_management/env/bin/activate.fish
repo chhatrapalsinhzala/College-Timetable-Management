@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/cmzala/Desktop/openxcell/College-Timetable-Management/env"
+set -gx VIRTUAL_ENV "/home/cmzala/Desktop/openxcell/College-Timetable-Management/class_management/env"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

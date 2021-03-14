@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beacon Admin Panel</title>
+	<!-- BOOTSTRAP STYLES-->
+    <link href="{% static 'customadmin/assets/css/bootstrap.css' %}" rel="stylesheet" />
+     <!-- FONTAWESOME STYLES-->
+    <link href="{% static 'customadmin/assets/css/font-awesome.css' %}" rel="stylesheet" />
+        <!-- CUSTOM STYLES-->
+    <link href="{% static 'customadmin/assets/css/custom.css' %}" rel="stylesheet" />
+     <!-- GOOGLE FONTS-->
+   <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+    <div id="wrapper">
+         <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="adjust-nav">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand"  href="#"><i class="fa fa-square-o "></i>&nbsp;Beacon Math Genie Admin Panel</a>  
+                </div>
+                <a style= "float:right;" role="button" href="{% url 'account_logout' %}" class="btn btn-rounded btn-danger btn-lg">Logout</a>
+            </div>
+        </div>
+        <!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li class="text-center user-image-back">
+                        <img src="{% static 'customadmin/assets/img/logo.png' %}" style="height: 350px; width: 220px;" class="img-responsive" />                     
+                    </li>
+                    <li>
+                        <a href="{% url 'home' %}"><i class="fa fa-desktop "></i>Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-edit "></i>Book Maintenance<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="{% url 'book' %}">Create New Book</a>
+                            </li>
+                            {% comment %} <li>
+                                <a href="{% url 'book_update' %}">Edit Book </a>
+                            </li> {% endcomment %}
+                            <li>
+                                <a href="{% url 'book_list' %}">Book List</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-edit "></i>Lesson Plan Maintenance<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="{% url 'lesson' %}">Create New Lesson Plan</a>
+                            </li>
+                            
+                            <li>
+                                <a href="{% url 'lesson_list' %}">Lesson Plan List</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                         <a href="#"><i class="fa fa-edit "></i>Customer Maintenance<span class="fa arrow"></span></a>
+                         <ul class="nav nav-second-level">
+                            <li>
+                               <a href="{% url 'customer_transaction' %}">Customer Transaction List </a>
+                            </li>
+                            
+                            <li>
+                                <a href="{% url 'customer_transaction_upload' %}">Upload CSV File</a>
+                            </li>
+                             <li>
+                                <a href="{% url 'subject_transaction_summary' %}">Subject Transaction Summary</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'customer_transaction_summary' %}">Customer Transaction Summary</a>
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-edit "></i>Exam Score References<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="{% url 'exam_score_references' %}">Create Exam Score</a>
+                            </li>
+                            
+                            <li>
+                                <a href="{% url 'exam_score_references_list' %}">Exam Score List</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-edit "></i>Staff Training curriculam<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="{% url 'staff_training_curriculum' %}">Create Staff Training curriculam</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'staff_training_curriculum_list' %}">Staff Training curriculam List</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-edit "></i>Audit References<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="{% url 'audit_reference_create' %}">Create Audit References</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'audit_reference_list' %}">Audit References List</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul> 
+              
+            </div>
+        </nav>
+
+{% block content %}{% endblock %}
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="{% static 'customadmin/assets/js/bootstrap.min.js' %}"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="{% static 'customadmin/assets/js/jquery.metisMenu.js' %}"></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src="{% static 'customadmin/assets/js/custom.js' %}"></script>
+    
+   
+</body>
+</html>

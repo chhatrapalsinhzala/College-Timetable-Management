@@ -10,22 +10,22 @@ class Student(BaseModel):
     Student model
     """
     user = models.ForeignKey(User,related_name='student_name',null=True, on_delete= models.SET_NULL)
-    date_of_birth = models.DateField('Date of birth', null=True,blank=True)
     phone = models.CharField('Cell phone', max_length=20)
-    photo = models.TextField('Photo', null=True, blank=True)
-    street = models.CharField('Street', max_length=200,null=True, blank=True)
-    street_2 = models.CharField('Second Street', max_length=200, blank=True, null=True)
-    country = models.CharField('country', max_length=200,null=True, blank=True)
-    city = models.CharField('City', max_length=200,null=True, blank=True)
-    state = models.CharField('State', max_length=200,null=True, blank=True)
-    zip = models.CharField('Zip code', max_length=30,null=True, blank=True)
-
+    address = models.TextField('Address', max_length=200,null=True, blank=True)
+    
     def __str__(self):
         if self.student:
             return self.user.get_full_name()
         else:
             return str(self.id)
 
+    def get_role(self):
+        if self.user.is_superuser:
+            return 'admin'
+        elif self.user.is_staff:
+            return 'teacher'
+        else:
+            return 'student'
 
 
 class StudentInClass(BaseModel):

@@ -1,4 +1,4 @@
-#!/home/cmzala/Desktop/openxcell/College-Timetable-Management/env/bin/python3
+#!/home/cmzala/Desktop/openxcell/College-Timetable-Management/class_management/env/bin/python3
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 
