@@ -49,3 +49,30 @@ To Implement this I have created 3 permission levels:
     - staff : Staff can create classes and can add the student in the class.
 
     - admin : All permissions with the access of Django admin.
+
+
+Project APIs
+    
+    - Rigister as a student or staff.
+    - Create class, Delete Class, Get class list.
+    - Add student in class, get all student class list and remove student form classs.
+    (I have shared the postman collection to test all apis.)
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
